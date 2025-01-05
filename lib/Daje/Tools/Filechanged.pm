@@ -44,7 +44,7 @@ use Mojo::File;
 # janeskil1525 janeskil1525@gmail.com
 #
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 # Is the hashes different ?
 sub is_file_changed($self, $file_path_name, $old_hash) {
