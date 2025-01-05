@@ -50,7 +50,7 @@ our $VERSION = "0.01";
 sub is_file_changed($self, $file_path_name, $old_hash) {
     my $result = 0;
     my $path = Mojo::File->new($file_path_name);
-    my $new_hash = $self->_load_new_hash($path);
+    my $new_hash = $self->load_new_hash($path);
     $old_hash = "" unless defined $old_hash;
     if ($new_hash ne $old_hash) {
         $result = 1;
@@ -58,8 +58,8 @@ sub is_file_changed($self, $file_path_name, $old_hash) {
     return $result;
 }
 
-# Load new hash (internal)
-sub _load_new_hash($self, $path) {
+# Load new hash
+sub load_new_hash($self, $path) {
     my $file_content = $path->slurp;
     my $hash = sha256_hex($file_content);
     return $hash;
